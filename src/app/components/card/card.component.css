@@ -1,0 +1,49 @@
+.card-container {
+  align-items: center;
+  border: 4px solid rgb(255, 255, 111);
+  border-radius: 1rem;
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  width: 20vw;
+}
+
+.card-container__name {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 0.5rem;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+  font-size: 1.75rem;
+  margin: 1rem 0;
+  padding: 0.5rem;
+}
+.card-container__name:first-letter {
+  text-transform: uppercase;
+}
+
+.card-container__sprite {
+  background-color: rgba(240, 248, 255, 0.6);
+  border-radius: 0.5rem;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.card-container__types {
+  margin: 1.25rem;
+}
+
+.card-container__type {
+  border-radius: 0.25rem;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 24px 0 rgba(0, 0, 0, 0.2);
+  margin: 0.25rem;
+  padding: 0.25rem;
+}
+
+/* 20 types -> https://pokeapi.co/api/v2/type*/
+.type-grass {
+  background-color: rgb(172, 235, 77);
+}
+
+.type-poison {
+  background-color: purple;
+  color: lightgray;
+}

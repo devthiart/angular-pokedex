@@ -1,1 +1,12 @@
-<p>card works!</p>
+<div [class]="'card-container type-'+firstType">
+  <h3 class="card-container__name">{{ pokemon.name }}</h3>
+  <img class="card-container__sprite" [src]="pokemon.sprites.front_default">
+  <div class="card-container__types">
+    <span
+      *ngFor="let typeData of pokemon.types"
+      [class]="'card-container__type type-'+typeData.type.name"
+    >
+      {{ typeData.type.name }}
+    </span>
+  </div>
+</div>

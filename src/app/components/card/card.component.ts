@@ -9,6 +9,7 @@ import { PokeAPIService } from 'src/app/services/pokeapi.service';
 })
 export class CardComponent implements OnInit {
   pokemon:PokeData;
+  firstType:string;
 
   constructor( private service:PokeAPIService ) {
     this.pokemon = {
@@ -19,13 +20,14 @@ export class CardComponent implements OnInit {
       },
       types:[],
     }
+    this.firstType = ''
   }
 
   ngOnInit():void {
-    this.getPokemon("bulbasaur");
+    this.getPokemonByName("bulbasaur");
   }
 
-  getPokemon(searchName:string) {
+  getPokemonByName(searchName:string) {
     this.service.getPokemonByName(searchName).subscribe(
       {
         next: (response) => {
@@ -35,6 +37,7 @@ export class CardComponent implements OnInit {
             sprites: response.sprites,
             types: response.types
           }
+          this.firstType = this.pokemon.types[0].type.name;
           console.log(this.pokemon);
         },
         error: (err) => console.log("Not found.")
