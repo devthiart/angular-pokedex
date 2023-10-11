@@ -37,3 +37,15 @@
   margin: 0.25rem;
   padding: 0.25rem;
 }
+
+@media (max-width: 950px) {
+  .card-container {
+    width: 40vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .card-container {
+    width: 80vw;
+  }
+}
