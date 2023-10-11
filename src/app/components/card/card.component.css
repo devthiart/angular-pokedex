@@ -37,13 +37,3 @@
   margin: 0.25rem;
   padding: 0.25rem;
 }
-
-/* 20 types -> https://pokeapi.co/api/v2/type*/
-.type-grass {
-  background-color: rgb(172, 235, 77);
-}
-
-.type-poison {
-  background-color: purple;
-  color: lightgray;
-}

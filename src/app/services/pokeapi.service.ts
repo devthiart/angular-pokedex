@@ -11,18 +11,25 @@ import { Observable } from 'rxjs';
 export class PokeAPIService {
   private baseURL:string = "";
   private pokeData:PokeData | any;
+  private listPokeData: Array<PokeData> | any;
 
-  constructor( private http:HttpClient ) {
+  constructor( private http: HttpClient ) {
     this.baseURL = environment.pokeApi;
   }
 
-  getPokemon():Observable<PokeData>{
-    this.pokeData = this.http.get<PokeData>(`${this.baseURL}?limit=100000&offset=0`);
+  getPokemonList(limit: Number, offset: Number): Observable<PokeData[]> {
+    const url:string = `${this.baseURL}?limit=${limit}&offset=${offset}`;
+    this.listPokeData = this.http.get<PokeData[]>(url);
+    return this.listPokeData;
+  }
+
+  getPokemonByName(pokemonName: string): Observable<PokeData> {
+    this.pokeData = this.http.get<PokeData>(`${this.baseURL}${pokemonName}`);
     return this.pokeData;
   }
 
-  getPokemonByName(pokemonName:string):Observable<PokeData>{
-    this.pokeData = this.http.get<PokeData>(`${this.baseURL}${pokemonName}`);
+  getPokemonByUrl(pokeApiUrl: string): Observable<PokeData> {
+    this.pokeData = this.http.get<PokeData>(pokeApiUrl);
     return this.pokeData;
   }
 }
