@@ -23,6 +23,11 @@ export class PokeAPIService {
     return this.listPokeData;
   }
 
+  getPokemonListByUrl(url: string): Observable<PokeData[]> {
+    this.listPokeData = this.http.get<PokeData[]>(url);
+    return this.listPokeData;
+  }
+
   getPokemonByName(pokemonName: string): Observable<PokeData> {
     this.pokeData = this.http.get<PokeData>(`${this.baseURL}${pokemonName}`);
     return this.pokeData;

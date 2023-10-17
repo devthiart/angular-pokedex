@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { PokeAPIService } from 'src/app/services/pokeapi.service';
 import { PokeRequest } from './../../models/pokeRequest';
 
@@ -8,18 +8,21 @@ import { PokeRequest } from './../../models/pokeRequest';
   styleUrls: ['./card-list.component.css']
 })
 export class CardListComponent {
-  pokemonReqList:Array<PokeRequest> = [];
+  pokemonReqList:Array<PokeRequest>;
+  nextUrlRequest: string;
 
   constructor( private service:PokeAPIService ) {
     this.pokemonReqList = [];
+    this.nextUrlRequest = '';
   }
   ngOnInit():void {
     this.getPokemonList();
   }
 
   getPokemonList() {
-    this.service.getPokemonList(151, 0).subscribe({
+    this.service.getPokemonList(30, 0).subscribe({
       next: (response) => {
+        this.nextUrlRequest = Object.values(response)[1].toString();
         const result:any = Object.values(response)[3];
 
         result.map((pokemon: PokeRequest) => {
@@ -28,5 +31,20 @@ export class CardListComponent {
       },
       error: (err) => {console.error(err)}
     })
+  }
+
+  @Output() loadNextPokemonList(): void {
+    if(this.nextUrlRequest !== null) {
+      this.service.getPokemonListByUrl(this.nextUrlRequest).subscribe({
+        next: (response) => {
+          this.nextUrlRequest = Object.values(response)[1].toString();
+          const result:any = Object.values(response)[3];
+
+          result.map((pokemon: PokeRequest) => {
+            this.pokemonReqList.push(pokemon);
+          });
+        }
+      });
+    }
   }
 }

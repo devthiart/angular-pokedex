@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardComponent } from './components/card/card.component';
 import { CardListComponent } from './components/card-list/card-list.component';
+import { SentinelLoadingComponent } from './components/sentinel-loading/sentinel-loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
-    CardListComponent
+    CardListComponent,
+    SentinelLoadingComponent
   ],
   imports: [
     BrowserModule,

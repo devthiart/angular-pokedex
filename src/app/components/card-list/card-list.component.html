@@ -1,6 +1,6 @@
-
 <section class="container-cards">
   <div *ngFor="let pokemonReq of pokemonReqList">
     <app-card [pokemonRequestData]="pokemonReq"></app-card>
   </div>
 </section>
+<app-sentinel-loading (loadNext)="loadNextPokemonList()"></app-sentinel-loading>

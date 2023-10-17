@@ -1,0 +1,20 @@
+.container__sentinel-loader {
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+}
+
+.sentinel-loader {
+  animation: spin 2s linear infinite;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  display: block;
+  height: 10vw;
+  width: 10vw;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
